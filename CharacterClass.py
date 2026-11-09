@@ -5,7 +5,7 @@ from items import Weapon
 class Character:
     """Represents a character in the RPG"""
 
-    def __init__(self, name: str, hp_max: int = 100, damage: int = 10, is_alive: bool = True, weapon) -> None:
+    def __init__(self, name: str, hp_max: int = 100, damage: int = 10, is_alive: bool = True, weapon: Weapon = None) -> None:
         """
         Initialise the Character
 
@@ -27,7 +27,7 @@ class Character:
         """Attack and deal damage to target character"""
         target.take_damage(self.damage) # calls the take_damage method of the target character
         
-        if self.weapon:
+        if self.weapon is not None:
             weapon_damage = self.weapon.roll_damage()
             target.take_damage(weapon_damage)
 
