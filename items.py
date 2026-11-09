@@ -1,3 +1,4 @@
+from DiceClass import Dice
 
 class Weapon:
     """ Representing a weapon in the game """
