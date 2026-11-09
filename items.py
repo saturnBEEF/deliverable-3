@@ -7,7 +7,7 @@ class Weapon:
         initialise the weapon
         
         args:
-            name (str): 
+            name (str): name of the weapon
             damage_dice (Dice): The dice used to calculate damage
         """
 
