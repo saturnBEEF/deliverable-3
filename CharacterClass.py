@@ -1,9 +1,11 @@
 # rework of lecture script
 
+from items import Weapon
+
 class Character:
     """Represents a character in the RPG"""
 
-    def __init__(self, name: str, hp_max: int = 100, damage: int = 10, is_alive: bool = True) -> None:
+    def __init__(self, name: str, hp_max: int = 100, damage: int = 10, is_alive: bool = True, weapon) -> None:
         """
         Initialise the Character
 
@@ -12,21 +14,28 @@ class Character:
             hp_max (int): Max hit points (default = 100)
             damage (int): Damage delt when character attacks (default = 10)
             is_alive (bool): Indicates if the character is alive (default = True)
+            weapon (Weapon): The weapon the character wields
         """
         self.name = name
         self._hp = hp_max  # Note: _hp indicated private attribute
         self.hp_max = hp_max
         self.damage = damage
         self.is_alive = is_alive
+        self.weapon = weapon
 
     def attack(self, target) -> None:
         """Attack and deal damage to target character"""
         target.take_damage(self.damage) # calls the take_damage method of the target character
+        
+        if self.weapon:
+            weapon_damage = self.weapon.roll_damage()
+            target.take_damage(weapon_damage)
 
     def take_damage(self, damage: int) -> None:
         """Take damage and reduce HP"""
         self._hp -= damage
         self._hp = max(self._hp, 0) # HP cannot end up lower than 0
+        
         if self._hp <= 0:
             self.is_alive = False
 
