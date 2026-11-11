@@ -1,0 +1,34 @@
+AI-summary for task 4:
+
+1. User: Asked for guidance on how to create the Warrior subclass and implement armor-based damage reduction in Task 4. 
+Answer: Advised defining armor: int = 5 in __init__ and overriding take_damage() to subtract armor from incoming damage before calling super().take_damage().
+
+2. User: Asked how to ensure effective damage in Warrior.take_damage() does not become negative when armor exceeds incoming damage. 
+Answer: Suggested using max(0, damage - self.armor) before passing the calculated value to the superclass method.
+
+3. User: Asked how the Mage subclass should manage its mana pool and handle special spell attacks versus base attacks in Task 4. 
+Answer: Advised checking if self.mana >= 10 inside attack() to spend 10 mana and deal double base damage (damage * 2) without rolling weapon damage.
+
+4. User: Asked how Mage.attack() should handle the scenario when mana is below 10. 
+Answer: Recommended executing super().attack(target) in the else block to perform a standard attack (including weapon damage) while restoring 5 mana up to mana_max.
+
+5. User: Asked whether Warrior and Mage subclasses should be placed inside characterclass.py or in a separate module. 
+Answer: Confirmed that adding the subclasses directly to characterclass.py extends the character module intuitively and follows assignment guidelines.
+
+6. User: Asked how to properly initialize inherited attributes like hp_max, damage, and weapon in Warrior and Mage using super().__init__(). 
+Answer: Advised passing name, hp_max, damage, and weapon to super().__init__() before initializing subclass-specific attributes like armor or mana.
+
+7. User: Asked to translate all code comments, docstrings, and print statements in Task 4 to English to satisfy assignment language requirements. 
+Answer: Provided English versions of all class definitions, method docstrings, comments, and combat console outputs for Warrior and Mage.
+
+8. User: Asked how to add structured Google-style docstrings with Args and Attributes sections to the Task 4 subclasses. 
+Answer: Provided formatted docstrings detailing attributes, parameters, default values, and operational behavior for Warrior, Mage, and their overridden methods.
+
+9. User: Asked how to create a test script to verify that Warrior armor and Mage spell mechanics function correctly in Task 4. 
+Answer: Created a test block initializing a Warrior and Mage with weapons, demonstrating magic spell casting, mana reduction, fallback attacks, and armor damage reduction.
+
+10. User: Asked how to structure a concise 1-minute video presentation script in English explaining the Task 4 implementation. 
+Answer: Drafted a 1-minute spoken script covering the design of Warrior defense, Mage resource management, and polymorphism in action.
+
+11. User: Asked how to resolve Git workspace directory issues in VS Code when preparing to commit Task 4 changes to the project repository. 
+Answer: Guided opening the cloned repository folder directly in VS Code, checking out the project-work branch, and staging modified files for commit.
