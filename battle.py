@@ -63,3 +63,25 @@ class Battle:
 
         return winner
     
+
+
+# =====================================================================
+# Test block for Task 5
+# =====================================================================
+if __name__ == "__main__":
+  from DiceClass import Dice
+  from CharacterClass import Mage, Warrior
+  from items import Weapon
+
+  # Create weapons
+  sword = Weapon("Iron Sword", Dice(sides=8))
+  staff = Weapon("Magic Staff", Dice(sides=6))
+
+  # Create hero (Warrior) and enemy (Mage)
+  conan = Warrior("Conan the Barbarian", hp_max=100, damage=12, armor=4, weapon=sword)
+  gandalf = Mage("Gandalf the Grey", hp_max=80, damage=10, mana=30, weapon=staff)
+
+  # Initialize and run battle
+  battle = Battle(hero=conan, enemy=gandalf)
+  victor = battle.simulate_battle()
+
