@@ -103,3 +103,63 @@ class Warrior(Character):
         effective_damage = max(0, damage - self.armor)
         super().take_damage(effective_damage)
 
+# --- Mage subclass (Resource-Based Attacker)
+class Mage(Character):
+    """ Mage subclass using mana to perform powerful magic spell attacks.
+    
+    Attributes:
+        mana (int): Current avaiable mana points.
+        mana_max (int): Maximum mana capacity.
+    """
+
+    def __init__(
+            self,
+            name: str,
+            hp_max: int = 100,
+            damage: int = 10,
+            mana: int = 30,
+            mana_max: int = 30,
+            weapon: Weapon = None,
+    ) -> None:
+        """ Initializes a Mage character with a mana resources.
+        
+        Args:
+            name (str): The name of the mage.
+            hp_max (int, optional): Maximum hit points. Defaults to 100.
+            damage (int, optional): Base attack damage. Defaults to 10.
+            mana (int, optional): Starting mana amount. Defaults to 30.
+            mana_max (int, optional): Maximum mana capacity. Defaults to 30.
+            weapon (Weapon, optional): Equipped weapon object. Defaults to None.
+        """
+        super().__init__(name=name, hp_max=hp_max, damage=damage, weapon=weapon)
+        self.mana = mana
+        self.mana_max = mana_max
+
+    def attack(self, target: Character) -> None:
+        """ Attacks the target character.
+
+        Uses a magic spell (double base damage, ignores weapon) if mana >= 10.
+        Otherwise, falls back to standard base attack (including equipped weapon)
+        and recovers 5 mana.
+
+        Args:
+            target (Character): The opponentcharacter being attacked.
+        """
+
+        if self.mana >= 10:
+            # Magic attack: spends 10 mana and deals double base damage (no weapon damage)
+            self.mana -= 10
+            magic_damage  = self.damage * 2
+            target.take_damage(magic_damage)
+            print(
+                f"{self.name} casts a MAGIC SPELL dealing {magic_damage} damage!"
+                f" (Mana remaining: {self.mana}/{self.mana_max})"
+            )
+        else:
+            # Base attack: performs standard attack (including weapon if equipped) and restores 5 mana
+            super().attack(target)
+            self.mana = min(self.mana + 5, self.mana_max)
+            print(
+                f"{self.name} performs a BASE ATTACK and restores 5 mana. (Mana:"
+                f" {self.mana}/{self.mana_max})"
+            )
