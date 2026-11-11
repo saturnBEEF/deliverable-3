@@ -60,3 +60,10 @@ class Character:
     def hp(self) -> int:
         """Public read-only property to inspect HP without allowing direct, unsafe edits."""
         return self._hp
+
+
+# Task 4 Character Subclass
+
+# --- Warrior subclass (Defensive Specialist)
+class Warrior(Character):
+    
