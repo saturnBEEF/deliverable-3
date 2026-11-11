@@ -89,4 +89,17 @@ class Warrior(Character):
             armor (int, optional): Armor value reducing incoming damage. Defaults to 5.
             weapon (Weapon, optional): Equipped weapon object. Defaults to None.
         """
+        super().__init__(name=name, hp_max=hp_max, damage=damage, weapon=weapon)
+        self.armor = armor
+
+
+    def take_damage(self, damage: int) -> None:
+        """ Reduces incoming damage by armor value before applying it to HP.
         
+        Args:
+            damage (int): The raw incoming damage amount.
+        """
+        # Ensure effective damage is non-negative
+        effective_damage = max(0, damage - self.armor)
+        super().take_damage(effective_damage)
+
