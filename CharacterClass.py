@@ -66,4 +66,27 @@ class Character:
 
 # --- Warrior subclass (Defensive Specialist)
 class Warrior(Character):
+    """ Warrior subclass specializing in physical defense using armor.
     
+    Attributes:
+        armor (int): The amount of armor reducing incoming physical damage.
+    """
+
+    def __init___(
+            self,
+            name: str,
+            hp_max: int = 100,
+            damage: int = 10,
+            armor: int = 5,
+            weapon: Weapon = None,
+    ) -> None:
+        """ Initializes a Warrior character with an armor attribute.
+        
+        Args:
+            name (str): The name of the character.
+            hp_max (int, optional): Maximum hit points. Defaults to 100.
+            damage (int, optional): Base attack damage. Defaults to 10.
+            armor (int, optional): Armor value reducing incoming damage. Defaults to 5.
+            weapon (Weapon, optional): Equipped weapon object. Defaults to None.
+        """
+        
