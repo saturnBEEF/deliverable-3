@@ -16,5 +16,5 @@ class Weapon:
         self.damage_dice = damage_dice
 
     def roll_damage(self) -> int:
-        """Roll the damage dice to calculate damage"""
+        """ Roll the damage dice to calculate damage """
         return self.damage_dice.roll()
