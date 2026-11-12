@@ -72,7 +72,7 @@ class Warrior(Character):
         armor (int): The amount of armor reducing incoming physical damage.
     """
 
-    def __init___(
+    def __init__(
             self,
             name: str,
             hp_max: int = 100,
