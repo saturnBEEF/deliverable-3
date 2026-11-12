@@ -14,3 +14,11 @@ class Dice:
     def roll(self) -> int:
         """Return a random integer between 1 and the number of sides."""
         return random.randint(1, self.sides)
+
+    def __repr__(self) -> str:
+        """Return a string such as Dice(sides=6)."""
+        return f"Dice(sides={self.sides})"
+
+    def __call__(self) -> int:
+        """Roll the dice when the object is called directly."""
+        return self.roll()
