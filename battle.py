@@ -32,7 +32,7 @@ class Battle:
         self.hero.attack(self.enemy)
 
         # Enemy retaliates only if still alive after hero's attack
-        if self.enemy.is_alive():
+        if self.enemy.is_alive:
             print(f"--- {self.enemy.name} retaliates against {self.hero.name} ---")
             self.enemy.attack(self.hero)
 
@@ -84,4 +84,3 @@ if __name__ == "__main__":
   # Initialize and run battle
   battle = Battle(hero=conan, enemy=gandalf)
   victor = battle.simulate_battle()
-
