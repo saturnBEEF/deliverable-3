@@ -1,0 +1,22 @@
+
+We discussed Python classes using your RPG project as an example:
+A class is a blueprint; an object is an instance made from it.
+Attributes store an object’s data. In Character, examples include self.name, self._hp, self.damage, and self.weapon.
+Methods are functions defined in a class that describe what its objects can do, such as attack() and take_damage().
+self refers to the current character instance.
+A character stores its weapon as self.weapon, so attack(self, target) can use that weapon without receiving it as an extra argument. It checks self.weapon is not None before using it.
+We also discussed making the weapon constructor parameter optional and putting it after parameters that have defaults.
+
+Asked what __pycache__ is: it’s a folder Python creates to store compiled .pyc bytecode, which it can safely recreate if deleted.
+
+Asked whether subclasses belong with their parent class or in separate scripts: for a small project, keeping Character, Warrior, and Mage together in CharacterClass.py is reasonable. 
+Splitting them into separate modules can help as the project grows
+
+Debugged a battle.py startup error where Warrior(...) rejected the armor keyword.
+The cause was a misspelled Warrior constructor, def __init___, so Python used
+Character.__init__ instead. Renamed it to __init__ so Warrior can initialize its
+armor and forward the remaining arguments to Character.
+
+Also fixed Battle.play_round() to read is_alive as a boolean attribute rather
+than call it as a method. Updated simulate_battle()'s return annotation to
+Character because it returns the winning character.

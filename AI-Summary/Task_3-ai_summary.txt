@@ -1,0 +1,4 @@
+No AI was used spesifically for task 3
+
+However I've used it to get a general overview of classes
+and for some error handling throughout the whole task.
