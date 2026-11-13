@@ -29,12 +29,24 @@ class Battle:
         """
 
         print(f"\n--- {self.hero.name} attacks {self.enemy.name} ---")
-        self.hero.attack(self.enemy)
+        self.damageHP(self.hero, self.enemy)
 
-        # Enemy retaliates only if still alive after hero's attack
+        # Enemy retaliates only if still alive after hero's attack  
         if self.enemy.is_alive:
             print(f"--- {self.enemy.name} retaliates against {self.hero.name} ---")
-            self.enemy.attack(self.hero)
+            self.damageHP(self.enemy, self.hero)
+
+    def damageHP(self, attacker: Character, target: Character) -> None:
+        """Attack the target and print damage dealt and remaining HP."""
+
+        hp_before = target.hp
+        attacker.attack(target)
+
+        damage_dealt = hp_before - target.hp
+        print(
+            f"{attacker.name} dealt {damage_dealt} damage to {target.name} "
+            f"({target.hp}/{target.hp_max} HP remaining)."
+        )
 
     def simulate_battle(self) -> None:
         """ Simulates full combat until one of the characters is no longer alive.
@@ -74,12 +86,11 @@ if __name__ == "__main__":
   from items import Weapon
 
   # Create weapons
-  sword = Weapon("Iron Sword", Dice(sides=8))
-  staff = Weapon("Magic Staff", Dice(sides=6))
+
 
   # Create hero (Warrior) and enemy (Mage)
-  conan = Warrior("Conan the Barbarian", hp_max=100, damage=12, armor=4, weapon=sword)
-  gandalf = Mage("Gandalf the Grey", hp_max=80, damage=10, mana=30, weapon=staff)
+  conan = Warrior("Conan the Barbarian", hp_max=100, damage=12, armor=4, weapon=None)
+  gandalf = Mage("Gandalf the Grey", hp_max=80, damage=10, mana=30, weapon=None)
 
   # Initialize and run battle
   battle = Battle(hero=conan, enemy=gandalf)
