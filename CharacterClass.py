@@ -42,7 +42,7 @@ class Character:
     def heal(self, amount: int) -> None:
         """Heal and increase HP"""
         self._hp += amount
-        self._hp = min(self._hp, self.hp_max)  # HP cannot exceed max HP
+        self._hp = min(self._hp, self.hp_max) # HP cannot exceed max HP
 
     def introduce(self) -> None:
         """Creates string that introduces character"""
