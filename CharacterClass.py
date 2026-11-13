@@ -152,7 +152,7 @@ class Mage(Character):
             magic_damage  = self.damage * 2
             target.take_damage(magic_damage)
             print(
-                f"{self.name} casts a MAGIC SPELL dealing {magic_damage} damage!"
+                f"{self.name} casts a MAGIC SPELL!"
                 f" (Mana remaining: {self.mana}/{self.mana_max})"
             )
         else:
