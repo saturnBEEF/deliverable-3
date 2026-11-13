@@ -1,7 +1,6 @@
 # Task 2: Introducing randomness with a Dice class
 import random
 
-
 class Dice:
     def __init__(self, sides: int = 6) -> None:
         """Initialize a dice with an integer number of sides."""
