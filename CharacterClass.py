@@ -29,7 +29,7 @@ class Character:
         
         if self.weapon is not None:
             weapon_damage = self.weapon.roll_damage()
-            target.take_damage(weapon_damage)
+            target.take_damage(weapon_damage) # Deals the base damage + an extra weapon damage
 
     def take_damage(self, damage: int) -> None:
         """Take damage and reduce HP"""
